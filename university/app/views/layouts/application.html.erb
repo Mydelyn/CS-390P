@@ -8,8 +8,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
+  <%= link_to "Home", root_path %>
+  <%= link_to "Sections", root_path %>
+  <%= link_to "Courses", root_path %>
+  <%= link_to "Students", root_path %>
+  <%= link_to "Enrollments", root_path %>
     <%= yield %>
+
   </body>
 </html>
