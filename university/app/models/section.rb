@@ -4,4 +4,8 @@ class Section < ActiveRecord::Base
   has_many :enrollments
   has_many :students, through: :enrollments
 
+  def numsem
+    "#{course.name} #{number} #{semester}"
+  end
+
 end

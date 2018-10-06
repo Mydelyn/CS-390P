@@ -4,7 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/app/views/courses/index.html.erb" description="&lt;br&gt;" line="49" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8d558d-1e3e-437b-ad86-20e50d699c61" name="Default Changelist" comment="" />
+    <list default="true" id="0a8d558d-1e3e-437b-ad86-20e50d699c61" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -399,15 +402,16 @@
       <updated>1537635000485</updated>
       <workItem from="1537635004039" duration="8190000" />
       <workItem from="1538704346942" duration="10341000" />
-      <workItem from="1538774364512" duration="3060000" />
+      <workItem from="1538774364512" duration="2781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21591000" />
+    <option name="totallyTimeSpent" value="21312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.52427185" />
