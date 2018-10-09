@@ -71,4 +71,9 @@ class SectionsController < ApplicationController
     def section_params
       params.require(:section).permit(:semester, :number, :course_id, :roomnumber)
     end
+
+  def search
+    @section = Section.where("name like?","%#{params[:query]}%" )
+    render :index
+  end
 end

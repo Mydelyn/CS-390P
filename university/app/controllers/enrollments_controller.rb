@@ -59,6 +59,12 @@ class EnrollmentsController < ApplicationController
       format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
       format.json { head :no_content }
     end
+
+    def search
+      @enrollment = Enrollment.where("name like?","%#{params[:query]}%" )
+      render :index
+    end
+
   end
 
   private
@@ -71,4 +77,7 @@ class EnrollmentsController < ApplicationController
     def enrollment_params
       params.require(:enrollment).permit(:section_id, :student_id)
     end
+
+
+
 end

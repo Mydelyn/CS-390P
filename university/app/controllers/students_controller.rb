@@ -71,4 +71,9 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:name)
     end
+
+  def search
+    @student = Student.where("name like?","%#{params[:query]}%" )
+    render :index
+  end
 end

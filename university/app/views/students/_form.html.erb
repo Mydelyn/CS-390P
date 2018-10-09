@@ -16,10 +16,6 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :section %>
-    <%= form.collection_check_boxes :section_ids, Section.all, :id, :numsem %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
