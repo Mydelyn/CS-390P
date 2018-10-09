@@ -21,6 +21,12 @@ class SectionsController < ApplicationController
   def edit
   end
 
+  def search
+    @sections = Section.joins(:course).where("courses.name LIKE ? or sections.semester like ? or sections.roomnumber like ?","%#{params[:query]}%","%#{params[:query]}%", "%#{params[:query]}%")
+    render :index
+  end
+
+
   # POST /sections
   # POST /sections.json
   def create
@@ -72,8 +78,4 @@ class SectionsController < ApplicationController
       params.require(:section).permit(:semester, :number, :course_id, :roomnumber)
     end
 
-  def search
-    @section = Section.where("name like?","%#{params[:query]}%" )
-    render :index
-  end
 end

@@ -21,6 +21,11 @@ class EnrollmentsController < ApplicationController
   def edit
   end
 
+  def search
+    @enrollments = Enrollment.joins(:student, section: :course).where("students.name like ? or courses.name like ?","%#{params[:query]}%", "%#{params[:query]}%")
+    render :index
+  end
+
   # POST /enrollments
   # POST /enrollments.json
   def create

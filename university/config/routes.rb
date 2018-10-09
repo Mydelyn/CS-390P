@@ -5,11 +5,6 @@ Rails.application.routes.draw do
   get "courses/index"
   get "enrollments/index"
 
-  resources :enrollments
-  resources :students
-  resources :courses
-  resources :sections
-
 
   resources :enrollments do
     collection do
