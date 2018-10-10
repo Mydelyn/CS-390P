@@ -3,9 +3,11 @@ class StudentsController < ApplicationController
 
   # GET /students
   # GET /students.json
+  #
   def index
     @students = Student.all
   end
+
 
   # GET /students/1
   # GET /students/1.json
@@ -21,10 +23,11 @@ class StudentsController < ApplicationController
   def edit
   end
 
+
   def search
     @students = Student.where("name like ?","%#{params[:query]}%")
     render :index
-  end
+    end
 
   # POST /students
   # POST /students.json
@@ -76,9 +79,6 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:name)
     end
-
-  def search
-    @student = Student.where("name like?","%#{params[:query]}%" )
-    render :index
   end
-end
+
+
