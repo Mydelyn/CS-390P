@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users
   get "courses/index"
   get "sections/index"
   get "courses/index"
@@ -29,6 +31,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+
 
 
   root to: 'pages#home'

@@ -34,19 +34,24 @@
 </table>
 
 <br>
-<h2>Sections Per Course</h2>
+<%= link_to 'New Course', new_course_path %>
 <br>
+
+
+<h2>Sections Per Course</h2>
+
 <% @courses.each do |course| %>
   <tr>
     <td><%= course.name %></td>
 <% course.sections.each do |section| %>
-  <li><%= section.number %></li>
+
+  <li> Section <%= section.number %></li>
 <% end %>
 <% end %>
 <br>
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+
 
 <br>
 <br>
