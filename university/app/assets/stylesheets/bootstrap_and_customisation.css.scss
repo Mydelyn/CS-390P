@@ -2,7 +2,7 @@
 
 body {
   background: url('landscape.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-attachment: fixed;
   line-height: 1.5;
@@ -12,10 +12,13 @@ body {
 .container {
   width: 500px;
   margin: 100px auto;
-  padding: 20px;
+  padding: 10px;
   background: black;
   background-color: rgba(0,0,0,0.6);
   text-align: center;
   border-radius: 40px;
 }
 
+h4{
+  color: white;
+}
