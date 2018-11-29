@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>A very simple SPA in Vue and Axios</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="Itemlist">
+    <button v-on:click="students_selected=false">Courses</button>
+    <button v-on:click="students_selected=true">Students</button>
+
+    <ul>
+    <span v-if="students_selected ">
+        <head>Name</head>
+        <div v-for="student in students">
+            <li>{{student.name}}</li>
+        </div>
+    </span>
+        <span v-else>
+        <div v-for="course in courses">
+            <li>{{course.name}} | {{course.department}}  | {{course.number}} | {{course.credithours}}</li>
+
+        </div>
+    </span>
+    </ul>
+</div>
+<script type="text/javascript">
+    var ItemsVue = new Vue({
+        el: '#Itemlist',
+        data: { students: [],
+            students_selected: true,
+            courses: [] },
+        methods: {
+            populate: function() {
+                axios.get('http://localhost:3000/students.json')
+                    .then(response => { this.students = response.data })
+                    .catch(error => { console.log(error); });
+                axios.get('http://localhost:3000/courses.json')
+                    .then(response => { this.courses = response.data })
+                    .catch(error => { console.log(error); });
+            }
+        }
+    });
+    ItemsVue.populate();
+</script>
+
+</body>
+</html>
