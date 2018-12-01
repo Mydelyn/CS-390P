@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Assignment Two SPA</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<button onclick="fetchCourses('courses', ['name', 'department','number','credithours'])">Courses</button>
+<button onclick="fetchSections('sections', ['semester','number','course_id','roomnumber'])">Sections</button>
+<button onclick="fetchStudents('students', ['name', ])">Students</button>
+
+
+<div id="list">
+</div>
+
+<script>
+    var fetchStudents = function(which, fields) {
+        $("#list").empty();
+        $("#list").append("<th>Name</th>")
+        $.get("http://localhost:3000/" + which + ".json", true)
+            .done(function(json) {
+                for (item in json) {
+                    lis = "<li>";
+                    for (field in fields) {
+                        lis += json[item][fields[field]] + " ";
+                    }
+                    lis += "</li>";
+                    $("#list").append(lis);
+                }
+            })
+            .fail(function(json){ console.log("fail"); })
+    };
+    var fetchSections = function(which, fields) {
+        $("#list").empty();
+        $("#list").append("<th>Semester</th><th>Section Number</th><th>Course</th><th>Room Number</th>")
+        $.get("http://localhost:3000/" + which + ".json", true)
+
+            .done(function(json) {
+                for (item in json) {
+                    lis = "<li>";
+                    for (field in fields) {
+                        lis += json[item][fields[field]] + " ";
+                    }
+                    lis += "</li>";
+                    $("#list").append(lis);
+                }
+
+            })
+            .fail(function(json){ console.log("fail"); })
+    };
+
+    var fetchCourses= function(which, fields) {
+        $("#list").empty();
+        $("#list").append("<th>Name</th><th>Department</th><th>Section Number</th><th>Credit Hours</th>")
+        $.get("http://localhost:3000/" + which + ".json", true)
+            .done(function(json) {
+                for (item in json) {
+                    lis = "<li>";
+                    for (field in fields) {
+                        lis += json[item][fields[field]] + " ";
+                    }
+                    lis += "</li>";
+                    $("#list").append(lis);
+                }
+            })
+            .fail(function(json){ console.log("fail"); })
+    };
+</script>
+
+</body>
+</html>
