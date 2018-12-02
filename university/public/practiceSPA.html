@@ -42,7 +42,16 @@
                 for (item in json) {
                     lis = "<li>";
                     for (field in fields) {
-                        lis += json[item][fields[field]] + " ";
+                        if ( fields[field] === 'course_id') {
+                            $.get("http://localhost:3000/courses/" + json[item][fields[field]] + ".json").done(function(inner_json){
+                                  lis += inner_json.name +" ";
+                                  console.log(inner_json);
+                                } )
+                        }
+                        else {
+                            lis += json[item][fields[field]] + " ";
+
+                        }
                     }
                     lis += "</li>";
                     $("#list").append(lis);

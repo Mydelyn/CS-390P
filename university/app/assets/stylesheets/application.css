@@ -15,9 +15,16 @@
  */
 h1 {
     color: blue;
+    text-decoration: underline;
+
 }
 
 h2 {
     color: darkred;
+}
+
+ac{
+   text-align: center;
+
 }
 
