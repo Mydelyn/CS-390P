@@ -10,50 +10,57 @@
 
 <button onclick="fetchCourses('courses', ['name', 'department','number','credithours'])">Courses</button>
 <button onclick="fetchSections('sections', ['semester','number','course_id','roomnumber'])">Sections</button>
-<button onclick="fetchStudents('students', ['name', ])">Students</button>
+<button onclick="fetchStudents('students', ['name',])">Students</button>
 
 
-<div id="list">
-</div>
+<table id="list">
+</table>
+
+
 
 <script>
     var fetchStudents = function(which, fields) {
         $("#list").empty();
-        $("#list").append("<th>Name</th>")
+        $("#list").append("<tr><th>Name</th></tr>")
+
+
         $.get("http://localhost:3000/" + which + ".json", true)
             .done(function(json) {
                 for (item in json) {
-                    lis = "<li>";
+                    lis = "<tr><td style = 'text-align: center'>";
                     for (field in fields) {
-                        lis += json[item][fields[field]] + " ";
+                        lis +=  json[item][fields[field]]+ "<td style = 'text-align:center'>" ;
+                        lis += "</li>";
+
                     }
-                    lis += "</li>";
                     $("#list").append(lis);
+
                 }
             })
             .fail(function(json){ console.log("fail"); })
     };
     var fetchSections = function(which, fields) {
         $("#list").empty();
-        $("#list").append("<th>Semester</th><th>Section Number</th><th>Course</th><th>Room Number</th>")
+        $("#list").append("<tr><th>Semester</th><th>Section Number</th><th>Course</th><th>Room Number</th></tr>")
+
         $.get("http://localhost:3000/" + which + ".json", true)
 
             .done(function(json) {
                 for (item in json) {
-                    lis = "<li>";
+                    lis = "<tr><td style = 'text-align: center'>";
                     for (field in fields) {
                         if ( fields[field] === 'course_id') {
                             $.get("http://localhost:3000/courses/" + json[item][fields[field]] + ".json").done(function(inner_json){
-                                  lis += inner_json.name +" ";
-                                  console.log(inner_json);
+                                lis +=   inner_json.name + "<td style = 'text-align:center'>" ;
+
+                                  console.log(inner_json.name);
                                 } )
                         }
                         else {
-                            lis += json[item][fields[field]] + " ";
-
+                            lis +=  json[item][fields[field]]+ "<td style = 'text-align:center'>" ;
+                            lis += "</li>";
                         }
                     }
-                    lis += "</li>";
                     $("#list").append(lis);
                 }
 
@@ -63,15 +70,15 @@
 
     var fetchCourses= function(which, fields) {
         $("#list").empty();
-        $("#list").append("<th>Name</th><th>Department</th><th>Section Number</th><th>Credit Hours</th>")
+        $("#list").append("<tr><th>Name</th><th>Department</th><th>Section Number</th><th>Credit Hours</th></tr>")
         $.get("http://localhost:3000/" + which + ".json", true)
             .done(function(json) {
                 for (item in json) {
-                    lis = "<li>";
+                    lis = "<tr><td style = 'text-align: center'>";
                     for (field in fields) {
-                        lis += json[item][fields[field]] + " ";
+                        lis +=  json[item][fields[field]]+ "<td style = 'text-align:center'>" ;
+                        lis += "</li>";
                     }
-                    lis += "</li>";
                     $("#list").append(lis);
                 }
             })
