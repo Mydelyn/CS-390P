@@ -52,8 +52,7 @@
                         if ( fields[field] === 'course_id') {
                             $.get("http://localhost:3000/courses/" + json[item][fields[field]] + ".json").done(function(inner_json){
                                 lis +=   inner_json.name + "<td style = 'text-align:center'>" ;
-
-                                  console.log(inner_json.name);
+                                  console.log(lis);
                                 } )
                         }
                         else {
