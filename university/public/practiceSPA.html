@@ -39,33 +39,41 @@
             })
             .fail(function(json){ console.log("fail"); })
     };
+
     var fetchSections = function(which, fields) {
         $("#list").empty();
         $("#list").append("<tr><th>Semester</th><th>Section Number</th><th>Course</th><th>Room Number</th></tr>")
 
-        $.get("http://localhost:3000/" + which + ".json", true)
 
+        $.get("http://localhost:3000/" + which + ".json", true)
             .done(function(json) {
                 for (item in json) {
                     lis = "<tr><td style = 'text-align: center'>";
                     for (field in fields) {
-                        if ( fields[field] === 'course_id') {
+                        if (fields[field] === 'course_id')
+                        {
                             $.get("http://localhost:3000/courses/" + json[item][fields[field]] + ".json").done(function(inner_json){
-                                lis +=   inner_json.name + "<td style = 'text-align:center'>" ;
-                                  console.log(lis);
-                                } )
+                                lis +=  inner_json.name ;
+                                console.log(lis);
+                            })
                         }
-                        else {
-                            lis +=  json[item][fields[field]]+ "<td style = 'text-align:center'>" ;
-                            lis += "</li>";
+                        else
+                        {
+                            lis += json[item][fields[field]] + "</td>" ;
+                            lis += "<td style = 'text-align:center'>";
+
                         }
                     }
                     $("#list").append(lis);
+
                 }
+                lis += "</tr>";
+
 
             })
             .fail(function(json){ console.log("fail"); })
     };
+
 
     var fetchCourses= function(which, fields) {
         $("#list").empty();
@@ -77,6 +85,7 @@
                     for (field in fields) {
                         lis +=  json[item][fields[field]]+ "<td style = 'text-align:center'>" ;
                         lis += "</li>";
+
                     }
                     $("#list").append(lis);
                 }
