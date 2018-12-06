@@ -1,3 +1,10 @@
+<!--
+Help Received: Luke Smith helped me write the innerjson function under FetchSections
+that correctly grabs the course name information from Courses.
+
+
+ThienNgo Le: Showed me how to write an HTML table using the table tag
+and the use of <td> and <tr> tags -->
 <html>
 <head>
     <title>Assignment Two SPA</title>
@@ -42,7 +49,7 @@
 
     var fetchSections = function(which, fields) {
         $("#list").empty();
-        $("#list").append("<tr><th>Semester</th><th>Section Number</th><th>Course</th><th>Room Number</th></tr>")
+        $("#list").append("<tr><th>Semester</th><th>Section Number</th><th>Room Number</th><th>Course </th></tr>")
 
 
         $.get("http://localhost:3000/" + which + ".json", true)
@@ -53,7 +60,8 @@
                         if (fields[field] === 'course_id')
                         {
                             $.get("http://localhost:3000/courses/" + json[item][fields[field]] + ".json").done(function(inner_json){
-                                lis +=  inner_json.name ;
+                                lis += inner_json.name + "</td>" ;
+                                lis += "<td style = 'text-align: center'>";
                                 console.log(lis);
                             })
                         }
@@ -67,7 +75,7 @@
                     $("#list").append(lis);
 
                 }
-                lis += "</tr>";
+
 
 
             })
